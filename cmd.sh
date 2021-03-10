@@ -1,0 +1,3 @@
+#SAM build and deploy
+bucket="`echo firstLambdaCD | tr 'A-Z' 'a-z'`"
+sam build && sam deploy --stack-name "firstLambdaCD" --parameter-overrides "ParameterKey=project_name,ParameterValue=firstLambdaCD,ParameterKey=aws_region,ParameterValue=us-east-1,ParameterKey=function_name,ParameterValue=lambda_func" --s3-bucket "bucket-$bucket" --s3-prefix "firstLambdaCD" --region "us-east-1" --capabilities "CAPABILITY_IAM" --no-confirm-changeset
